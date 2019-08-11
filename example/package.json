@@ -10,7 +10,7 @@
 		"react": "16.2.0",
 		"react-native": "0.52.x",
 		"react-native-linear-gradient": "2.4.0",
-		"react-native-snap-carousel": "file:../"
+		"react-native-snap-carousel": "github:theFong/react-native-snap-carousel"
 	},
 	"devDependencies": {
 		"babel-preset-react-native": "4.0.0",

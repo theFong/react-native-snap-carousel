@@ -11,6 +11,7 @@ import {
     stackAnimatedStyles,
     tinderAnimatedStyles
 } from '../utils/animations';
+import { RecyclerListView, DataProvider } from 'recyclerlistview';
 
 const IS_IOS = Platform.OS === 'ios';
 
@@ -18,6 +19,7 @@ const IS_IOS = Platform.OS === 'ios';
 // See: https://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html
 const AnimatedFlatList = FlatList ? Animated.createAnimatedComponent(FlatList) : null;
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
+const AnimatedRecyclerList = Animated.createAnimatedComponent(RecyclerListView);
 
 // React Native automatically handles RTL layouts; unfortunately, it's buggy with horizontal ScrollView
 // See https://github.com/facebook/react-native/issues/11960
@@ -1338,16 +1340,17 @@ export default class Carousel extends Component {
 
         const ScrollViewComponent = typeof useScrollView === 'function' ? useScrollView : AnimatedScrollView
 
-        return this._needsScrollView() ? (
-            <ScrollViewComponent {...props}>
-                {
-                    this._getCustomData().map((item, index) => {
-                        return this._renderItem({ item, index });
-                    })
-                }
-            </ScrollViewComponent>
-        ) : (
-            <AnimatedFlatList {...props} />
-        );
+        return <RecyclerListView {...props} />
+        // return this._needsScrollView() ? (
+        //     <ScrollViewComponent {...props}>
+        //         {
+        //             this._getCustomData().map((item, index) => {
+        //                 return this._renderItem({ item, index });
+        //             })
+        //         }
+        //     </ScrollViewComponent>
+        // ) : (
+        //     <AnimatedFlatList {...props} />
+        // );
     }
 }
